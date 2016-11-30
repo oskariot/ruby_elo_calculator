@@ -6,18 +6,18 @@ def get_input(prompt, error_msg, first_prompt_ready = false)
   if first_prompt_ready
     Color.bold_yellow
   else
-    in_color('bold_blue', 'bold_yellow') { print prompt + ' '}
+    in_color('bold_blue', 'bold_yellow') { print prompt + ' ' }
   end
   until yield(value = gets.chomp)
-    in_color('bold_blue', 'bold_yellow') { puts error_msg; print prompt + ' '}
+    in_color('bold_blue', 'bold_yellow') { print "#{error_msg}\n#{prompt} " }
   end
   value
 end
 
 ELO_TABLE = [
-    0, 4, 11, 18, 26, 33, 40, 47, 54, 62, 69, 77, 84, 92, 99, 107, 114, 122, 130,
-    138, 146, 154, 163, 171, 180, 189, 198, 207, 216, 226, 236, 246, 257, 268, 279,
-    291, 303, 316, 329, 345, 358, 375, 392
+    0, 4, 11, 18, 26, 33, 40, 47, 54, 62, 69, 77, 84, 92, 99, 107, 114, 122,
+    130, 138, 146, 154, 163, 171, 180, 189, 198, 207, 216, 226, 236, 246,
+    257, 268, 279, 291, 303, 316, 329, 345, 358, 375, 392
 ]
 
 def expected(self_rating, op_rating)
@@ -58,11 +58,11 @@ begin
 
   elo_change = ((n_of_points - expected_overall).round(2) * k_factor).round(2)
 
-  in_color('bold_blue') { print 'ELO change: '}
-  in_color(elo_change >= 0.0 ? 'bold_green' : 'bold_red') { puts '%+g' % elo_change }
+  in_color('bold_blue') { print 'ELO change: ' }
+  in_color(elo_change >= 0.0 ? 'bold_green' : 'bold_red') { puts format("%+g\n", elo_change) }
 rescue SystemExit, Interrupt
   puts
-rescue Exception => e
+rescue StandardError => e
   Color.bold_red
   puts "\nError! \n#{e}"
 ensure
