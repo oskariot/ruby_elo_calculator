@@ -37,7 +37,7 @@ begin
   end).to_i
 
   n_of_games = (get_input 'Nº of games:', 'Incorrect number!' do |val|
-    val.is_i?
+    val.is_i? && val.to_i > 0
   end).to_i
 
   n_of_points = (get_input 'Nº of points:', 'Incorrect number!' do |val|
@@ -53,7 +53,7 @@ begin
   end
 
   k_factor = (get_input 'K factor:', 'Incorrect factor!' do |val|
-    val.is_i? && [10, 20, 40].include?(val.to_i)
+    [10, 20, 40].include?(val.to_i)
   end).to_i
 
   elo_change = ((n_of_points - expected_overall).round(2) * k_factor).round(2)
