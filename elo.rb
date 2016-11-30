@@ -61,10 +61,10 @@ begin
   in_color('bold_blue') { print 'ELO change: ' }
   in_color(elo_change >= 0.0 ? 'bold_green' : 'bold_red') { puts format("%+g\n", elo_change) }
 rescue SystemExit, Interrupt
-  puts
 rescue StandardError => e
   Color.bold_red
-  puts "\nError! \n#{e}"
+  print "\nError! \n#{e}"
 ensure
+  puts
   Color.default
 end
