@@ -1,5 +1,5 @@
-require './colorize.rb'
-require './utils.rb'
+require_relative './colorize.rb'
+require_relative './utils.rb'
 require 'ordinalize_full/integer'
 
 def get_input(prompt, error_msg, first_prompt_ready = false)
