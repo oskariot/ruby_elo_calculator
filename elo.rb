@@ -6,7 +6,7 @@ def get_input(prompt, error_msg, first_prompt_ready = false)
   if first_prompt_ready
     Color.bold_yellow
   else
-    in_color('bold_blue', 'bold_yellow') { print prompt + ' ' }
+    in_color('bold_blue', 'bold_yellow') { print prompt, ' ' }
   end
   until yield(value = gets.chomp)
     in_color('bold_blue', 'bold_yellow') { print "#{error_msg}\n#{prompt} " }
