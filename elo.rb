@@ -2,8 +2,6 @@ require './colorize.rb'
 require './utils.rb'
 require 'ordinalize_full/integer'
 
-
-
 def get_input(prompt, error_msg, first_prompt_ready = false)
   if first_prompt_ready
     Color.bold_yellow
@@ -61,17 +59,12 @@ begin
   elo_change = ((n_of_points - expected_overall).round(2) * k_factor).round(2)
 
   in_color('bold_blue') { print 'ELO change: '}
-  in_color(elo_change >= 0.0 ? 'bold_green' : 'bold_red') { print '%+g' % elo_change }
-  puts
-
-  Color.default
-
+  in_color(elo_change >= 0.0 ? 'bold_green' : 'bold_red') { puts '%+g' % elo_change }
 rescue SystemExit, Interrupt
   puts
 rescue Exception => e
   Color.bold_red
-  puts
-  puts "Error! \n#{e}"
+  puts "\nError! \n#{e}"
 ensure
   Color.default
 end
