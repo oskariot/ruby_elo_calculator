@@ -1,0 +1,1 @@
+gem 'ordinalize_full'
