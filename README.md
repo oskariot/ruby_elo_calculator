@@ -1,7 +1,7 @@
 # ELO Calculator
 Simple, colorful console ELO rating calculator written in Ruby.
 
-###Usage
+### Usage
 Go to the program directory and execute:
 ```bash
 bundle
